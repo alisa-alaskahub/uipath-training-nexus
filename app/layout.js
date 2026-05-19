@@ -14,8 +14,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata = {
-  title: "UiPath Training Nexus",
-  description: "UiPath Training Nexus",
+  title: "Nexus Operations Portal",
+  description: "Internal portal for IT hardware distribution.",
 };
 
 export default function RootLayout({ children }) {
