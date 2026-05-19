@@ -20,256 +20,31 @@ const IMG = {
 };
 
 const PRODUCTS = [
-  {
-    id: 1, name: 'Dell UltraSharp 27" 4K Monitor', model: 'DELL-U2723QE',
-    category: 'Monitors', price: 2399, status: 'In Stock',
-    specs: [
-      { label: 'Screen Size',   value: '27"' },
-      { label: 'Resolution',    value: '3840 × 2160' },
-      { label: 'Panel Type',    value: 'IPS' },
-      { label: 'Refresh Rate',  value: '60 Hz' },
-    ],
-  },
-  {
-    id: 2, name: 'LG 32UN880 UltraFine Display', model: 'LG-32UN880-B',
-    category: 'Monitors', price: 3499, status: 'In Stock',
-    specs: [
-      { label: 'Screen Size',   value: '32"' },
-      { label: 'Resolution',    value: '3840 × 2160' },
-      { label: 'Panel Type',    value: 'Nano IPS' },
-      { label: 'Brightness',    value: '350 cd/m²' },
-    ],
-  },
-  {
-    id: 3, name: 'BenQ PD2700U Designer Monitor', model: 'BNQ-PD2700U',
-    category: 'Monitors', price: 2199, status: 'Out of Stock',
-    specs: [
-      { label: 'Screen Size',   value: '27"' },
-      { label: 'Resolution',    value: '3840 × 2160' },
-      { label: 'Panel Type',    value: 'IPS' },
-      { label: 'Color Gamut',   value: '100% sRGB' },
-    ],
-  },
-  {
-    id: 4, name: 'Acer SB220Q 21.5" Full HD Monitor', model: 'ACR-SB220Q-BI',
-    category: 'Monitors', price: 699, status: 'In Stock',
-    specs: [
-      { label: 'Screen Size',   value: '21.5"' },
-      { label: 'Resolution',    value: '1920 × 1080' },
-      { label: 'Panel Type',    value: 'IPS' },
-      { label: 'Refresh Rate',  value: '75 Hz' },
-    ],
-  },
-  {
-    id: 5, name: 'Logitech MX Keys Advanced Keyboard', model: 'LGT-MX-KEYS',
-    category: 'Keyboards', price: 499, status: 'In Stock',
-    specs: [
-      { label: 'Switch Type',   value: 'Low-profile' },
-      { label: 'Connectivity',  value: 'Bluetooth / USB' },
-      { label: 'Layout',        value: 'Full-size' },
-      { label: 'Backlight',     value: 'White LED' },
-    ],
-  },
-  {
-    id: 6, name: 'Das Keyboard 4 Professional', model: 'DKBD-4-PRO',
-    category: 'Keyboards', price: 699, status: 'Out of Stock',
-    specs: [
-      { label: 'Switch Type',   value: 'Cherry MX Blue' },
-      { label: 'Connectivity',  value: 'USB' },
-      { label: 'Layout',        value: 'Full-size' },
-      { label: 'Backlight',     value: 'None' },
-    ],
-  },
-  {
-    id: 7, name: 'Keychron K2 Wireless Mechanical', model: 'KCH-K2-WL-RGB',
-    category: 'Keyboards', price: 399, status: 'Out of Stock',
-    specs: [
-      { label: 'Switch Type',   value: 'Gateron G Pro' },
-      { label: 'Connectivity',  value: 'Bluetooth / USB' },
-      { label: 'Layout',        value: '75%' },
-      { label: 'Backlight',     value: 'RGB' },
-    ],
-  },
-  {
-    id: 8, name: 'Logitech MX Master 3S Mouse', model: 'LGT-MX-M3S',
-    category: 'Mice', price: 389, status: 'In Stock',
-    specs: [
-      { label: 'Sensor',        value: 'Darkfield' },
-      { label: 'DPI Range',     value: '200 – 8 000' },
-      { label: 'Connectivity',  value: 'Bluetooth / USB' },
-      { label: 'Buttons',       value: '7' },
-    ],
-  },
-  {
-    id: 9, name: 'Razer DeathAdder V3 Gaming Mouse', model: 'RZR-DA-V3-BLK',
-    category: 'Mice', price: 279, status: 'In Stock',
-    specs: [
-      { label: 'Sensor',        value: 'Focus Pro 30K' },
-      { label: 'DPI Range',     value: '100 – 30 000' },
-      { label: 'Connectivity',  value: 'USB' },
-      { label: 'Buttons',       value: '6' },
-    ],
-  },
-  {
-    id: 10, name: 'Kensington Expert Mouse Trackball', model: 'KEN-EXP-MOUSE',
-    category: 'Mice', price: 399, status: 'In Stock',
-    specs: [
-      { label: 'Type',          value: 'Trackball' },
-      { label: 'DPI Range',     value: '400 – 1 200' },
-      { label: 'Connectivity',  value: 'Bluetooth / USB' },
-      { label: 'Buttons',       value: '4' },
-    ],
-  },
-  {
-    id: 11, name: 'HP LaserJet Pro M404dn', model: 'HP-LJ-M404DN',
-    category: 'Printers', price: 1299, status: 'In Stock',
-    specs: [
-      { label: 'Print Type',    value: 'Laser Mono' },
-      { label: 'Speed',         value: '38 ppm' },
-      { label: 'Resolution',    value: '1200 dpi' },
-      { label: 'Connectivity',  value: 'Ethernet / USB' },
-    ],
-  },
-  {
-    id: 12, name: 'Brother HL-L3270CDW Color Laser', model: 'BRO-HLL3270CDW',
-    category: 'Printers', price: 1799, status: 'Out of Stock',
-    specs: [
-      { label: 'Print Type',    value: 'Laser Color' },
-      { label: 'Speed',         value: '25 ppm' },
-      { label: 'Resolution',    value: '2400 dpi' },
-      { label: 'Connectivity',  value: 'Wi-Fi / Ethernet' },
-    ],
-  },
-  {
-    id: 13, name: 'Cisco SG350-10 Managed Switch', model: 'CSC-SG350-10P',
-    category: 'Networking', price: 1599, status: 'In Stock',
-    specs: [
-      { label: 'Ports',         value: '8× Gigabit' },
-      { label: 'Speed',         value: '1 Gbps' },
-      { label: 'Management',    value: 'Web / CLI' },
-      { label: 'PoE Ports',     value: '0' },
-    ],
-  },
-  {
-    id: 14, name: 'TP-Link TL-SG1016D Gigabit Switch', model: 'TPL-SG1016D',
-    category: 'Networking', price: 299, status: 'In Stock',
-    specs: [
-      { label: 'Ports',         value: '16× Gigabit' },
-      { label: 'Speed',         value: '1 Gbps' },
-      { label: 'Management',    value: 'Unmanaged' },
-      { label: 'Backplane',     value: '32 Gbps' },
-    ],
-  },
-  {
-    id: 15, name: 'Ubiquiti UniFi AP-AC-LR Access Point', model: 'UBQ-UAP-AC-LR',
-    category: 'Networking', price: 799, status: 'Out of Stock',
-    specs: [
-      { label: 'Standard',      value: '802.11ac' },
-      { label: 'Bands',         value: '2.4 GHz / 5 GHz' },
-      { label: 'Max Speed',     value: '867 Mbps' },
-      { label: 'Range',         value: 'Long-range' },
-    ],
-  },
-  {
-    id: 16, name: 'Samsung 870 EVO 1TB SSD', model: 'SAM-870EVO-1TB',
-    category: 'Storage', price: 399, status: 'In Stock',
-    specs: [
-      { label: 'Type',          value: 'SSD 2.5"' },
-      { label: 'Interface',     value: 'SATA III' },
-      { label: 'Capacity',      value: '1 TB' },
-      { label: 'Read Speed',    value: '560 MB/s' },
-    ],
-  },
-  {
-    id: 17, name: 'WD My Passport 4TB Portable Drive', model: 'WD-PASS-4TB-BLK',
-    category: 'Storage', price: 349, status: 'In Stock',
-    specs: [
-      { label: 'Type',          value: 'HDD Portable' },
-      { label: 'Interface',     value: 'USB 3.0' },
-      { label: 'Capacity',      value: '4 TB' },
-      { label: 'Write Speed',   value: '130 MB/s' },
-    ],
-  },
-  {
-    id: 18, name: 'Seagate IronWolf 8TB NAS Drive', model: 'SEA-IW-8TB-NAS',
-    category: 'Storage', price: 799, status: 'In Stock',
-    specs: [
-      { label: 'Type',          value: 'HDD 3.5" NAS' },
-      { label: 'Interface',     value: 'SATA III' },
-      { label: 'Capacity',      value: '8 TB' },
-      { label: 'Spindle Speed', value: '7200 RPM' },
-    ],
-  },
-  {
-    id: 19, name: 'Jabra Evolve2 55 UC Headset', model: 'JAB-EV2-55-UC',
-    category: 'Audio', price: 1199, status: 'In Stock',
-    specs: [
-      { label: 'Type',          value: 'On-ear Headset' },
-      { label: 'Connectivity',  value: 'Bluetooth / USB' },
-      { label: 'Noise Cancel.', value: 'ANC' },
-      { label: 'Battery',       value: '36 h' },
-    ],
-  },
-  {
-    id: 20, name: 'Sony WH-1000XM5 Wireless Headphones', model: 'SNY-WH1000XM5',
-    category: 'Audio', price: 1299, status: 'Out of Stock',
-    specs: [
-      { label: 'Type',          value: 'Over-ear' },
-      { label: 'Connectivity',  value: 'Bluetooth' },
-      { label: 'Noise Cancel.', value: 'ANC' },
-      { label: 'Battery',       value: '30 h' },
-    ],
-  },
-  {
-    id: 21, name: 'Plantronics Voyager Focus 2 Headset', model: 'PLT-VYG-FC2-UC',
-    category: 'Audio', price: 899, status: 'In Stock',
-    specs: [
-      { label: 'Type',          value: 'On-ear Headset' },
-      { label: 'Connectivity',  value: 'Bluetooth / USB' },
-      { label: 'Noise Cancel.', value: 'ANC' },
-      { label: 'Battery',       value: '19 h' },
-    ],
-  },
-  {
-    id: 22, name: 'Belkin USB-C Hub 7-in-1', model: 'BLK-HUB-7IN1-C',
-    category: 'Accessories', price: 249, status: 'In Stock',
-    specs: [
-      { label: 'Ports',         value: '7-in-1' },
-      { label: 'USB-C Power',   value: '100W PD' },
-      { label: 'Video Output',  value: 'HDMI 4K' },
-      { label: 'USB Ports',     value: '3× USB-A' },
-    ],
-  },
-  {
-    id: 23, name: 'StarTech Dual Monitor Stand', model: 'STC-DMON-STD-S',
-    category: 'Accessories', price: 399, status: 'Out of Stock',
-    specs: [
-      { label: 'Type',          value: 'Dual Arm' },
-      { label: 'VESA',          value: '75×75 / 100×100' },
-      { label: 'Arm Reach',     value: '40 cm' },
-      { label: 'Max Load',      value: '2 × 9 kg' },
-    ],
-  },
-  {
-    id: 24, name: 'Logitech C920 HD Pro Webcam', model: 'LGT-C920-PRO',
-    category: 'Accessories', price: 329, status: 'In Stock',
-    specs: [
-      { label: 'Resolution',    value: '1080p Full HD' },
-      { label: 'Frame Rate',    value: '30 fps' },
-      { label: 'Autofocus',     value: 'Yes' },
-      { label: 'Connectivity',  value: 'USB' },
-    ],
-  },
-  {
-    id: 25, name: 'Anker PowerConf C300 Smart Webcam', model: 'ANK-PWC-C300',
-    category: 'Accessories', price: 399, status: 'In Stock',
-    specs: [
-      { label: 'Resolution',    value: '1080p Full HD' },
-      { label: 'Frame Rate',    value: '60 fps' },
-      { label: 'Autofocus',     value: 'AI-powered' },
-      { label: 'FOV',           value: '65° – 95°' },
-    ],
-  },
+  { id: 1,  name: 'Dell UltraSharp 27" 4K Monitor',       model: 'DELL-U2723QE',    category: 'Monitors',    price: 2399, status: 'In Stock',     manufacturer: 'Dell',        specs: '27" IPS · 3840×2160 · 60 Hz' },
+  { id: 2,  name: 'LG 32UN880 UltraFine Display',          model: 'LG-32UN880-B',    category: 'Monitors',    price: 3499, status: 'In Stock',     manufacturer: 'LG',          specs: '32" Nano IPS · 3840×2160 · 350 cd/m²' },
+  { id: 3,  name: 'BenQ PD2700U Designer Monitor',         model: 'BNQ-PD2700U',     category: 'Monitors',    price: 2199, status: 'Out of Stock', manufacturer: 'BenQ',        specs: '27" IPS · 3840×2160 · 100% sRGB' },
+  { id: 4,  name: 'Acer SB220Q 21.5" Full HD Monitor',     model: 'ACR-SB220Q-BI',   category: 'Monitors',    price: 699,  status: 'In Stock',     manufacturer: 'Acer',        specs: '21.5" IPS · 1920×1080 · 75 Hz' },
+  { id: 5,  name: 'Logitech MX Keys Advanced Keyboard',    model: 'LGT-MX-KEYS',     category: 'Keyboards',   price: 499,  status: 'In Stock',     manufacturer: 'Logitech',    specs: 'Low-profile · Full-size · Bluetooth / USB · White LED' },
+  { id: 6,  name: 'Das Keyboard 4 Professional',           model: 'DKBD-4-PRO',      category: 'Keyboards',   price: 699,  status: 'Out of Stock', manufacturer: 'Das Keyboard', specs: 'Cherry MX Blue · Full-size · USB' },
+  { id: 7,  name: 'Keychron K2 Wireless Mechanical',       model: 'KCH-K2-WL-RGB',   category: 'Keyboards',   price: 399,  status: 'Out of Stock', manufacturer: 'Keychron',    specs: 'Gateron G Pro · 75% · Bluetooth / USB · RGB' },
+  { id: 8,  name: 'Logitech MX Master 3S Mouse',           model: 'LGT-MX-M3S',      category: 'Mice',        price: 389,  status: 'In Stock',     manufacturer: 'Logitech',    specs: 'Darkfield sensor · 200–8000 DPI · Bluetooth / USB · 7 buttons' },
+  { id: 9,  name: 'Razer DeathAdder V3 Gaming Mouse',      model: 'RZR-DA-V3-BLK',   category: 'Mice',        price: 279,  status: 'In Stock',     manufacturer: 'Razer',       specs: 'Focus Pro 30K · 100–30000 DPI · USB · 6 buttons' },
+  { id: 10, name: 'Kensington Expert Mouse Trackball',     model: 'KEN-EXP-MOUSE',   category: 'Mice',        price: 399,  status: 'In Stock',     manufacturer: 'Kensington',  specs: 'Trackball · 400–1200 DPI · Bluetooth / USB · 4 buttons' },
+  { id: 11, name: 'HP LaserJet Pro M404dn',                model: 'HP-LJ-M404DN',    category: 'Printers',    price: 1299, status: 'In Stock',     manufacturer: 'HP',          specs: 'Laser Mono · 38 ppm · 1200 dpi · Ethernet / USB' },
+  { id: 12, name: 'Brother HL-L3270CDW Color Laser',       model: 'BRO-HLL3270CDW',  category: 'Printers',    price: 1799, status: 'Out of Stock', manufacturer: 'Brother',     specs: 'Laser Color · 25 ppm · 2400 dpi · Wi-Fi / Ethernet' },
+  { id: 13, name: 'Cisco SG350-10 Managed Switch',         model: 'CSC-SG350-10P',   category: 'Networking',  price: 1599, status: 'In Stock',     manufacturer: 'Cisco',       specs: '8× Gigabit · 1 Gbps · Managed (Web/CLI)' },
+  { id: 14, name: 'TP-Link TL-SG1016D Gigabit Switch',     model: 'TPL-SG1016D',     category: 'Networking',  price: 299,  status: 'In Stock',     manufacturer: 'TP-Link',     specs: '16× Gigabit · 1 Gbps · Unmanaged · 32 Gbps backplane' },
+  { id: 15, name: 'Ubiquiti UniFi AP-AC-LR Access Point',  model: 'UBQ-UAP-AC-LR',   category: 'Networking',  price: 799,  status: 'Out of Stock', manufacturer: 'Ubiquiti',    specs: '802.11ac · 2.4/5 GHz · 867 Mbps · Long-range' },
+  { id: 16, name: 'Samsung 870 EVO 1TB SSD',               model: 'SAM-870EVO-1TB',  category: 'Storage',     price: 399,  status: 'In Stock',     manufacturer: 'Samsung',     specs: 'SSD 2.5" · SATA III · 1 TB · 560 MB/s read' },
+  { id: 17, name: 'WD My Passport 4TB Portable Drive',     model: 'WD-PASS-4TB-BLK', category: 'Storage',     price: 349,  status: 'In Stock',     manufacturer: 'Western Digital', specs: 'HDD Portable · USB 3.0 · 4 TB · 130 MB/s write' },
+  { id: 18, name: 'Seagate IronWolf 8TB NAS Drive',        model: 'SEA-IW-8TB-NAS',  category: 'Storage',     price: 799,  status: 'In Stock',     manufacturer: 'Seagate',     specs: 'HDD 3.5" NAS · SATA III · 8 TB · 7200 RPM' },
+  { id: 19, name: 'Jabra Evolve2 55 UC Headset',           model: 'JAB-EV2-55-UC',   category: 'Audio',       price: 1199, status: 'In Stock',     manufacturer: 'Jabra',       specs: 'On-ear · Bluetooth / USB · ANC · 36 h battery' },
+  { id: 20, name: 'Sony WH-1000XM5 Wireless Headphones',   model: 'SNY-WH1000XM5',   category: 'Audio',       price: 1299, status: 'Out of Stock', manufacturer: 'Sony',        specs: 'Over-ear · Bluetooth · ANC · 30 h battery' },
+  { id: 21, name: 'Plantronics Voyager Focus 2 Headset',   model: 'PLT-VYG-FC2-UC',  category: 'Audio',       price: 899,  status: 'In Stock',     manufacturer: 'Plantronics', specs: 'On-ear · Bluetooth / USB · ANC · 19 h battery' },
+  { id: 22, name: 'Belkin USB-C Hub 7-in-1',               model: 'BLK-HUB-7IN1-C',  category: 'Accessories', price: 249,  status: 'In Stock',     manufacturer: 'Belkin',      specs: '7-in-1 · 100W PD · HDMI 4K · 3× USB-A' },
+  { id: 23, name: 'StarTech Dual Monitor Stand',           model: 'STC-DMON-STD-S',  category: 'Accessories', price: 399,  status: 'Out of Stock', manufacturer: 'StarTech',    specs: 'Dual Arm · VESA 75×75/100×100 · 40 cm reach · 2×9 kg max' },
+  { id: 24, name: 'Logitech C920 HD Pro Webcam',           model: 'LGT-C920-PRO',    category: 'Accessories', price: 329,  status: 'In Stock',     manufacturer: 'Logitech',    specs: '1080p / 30fps · Autofocus · USB' },
+  { id: 25, name: 'Anker PowerConf C300 Smart Webcam',     model: 'ANK-PWC-C300',    category: 'Accessories', price: 399,  status: 'In Stock',     manufacturer: 'Anker',       specs: '1080p / 60fps · AI Autofocus · 65°–95° FOV' },
 ];
 
 const PAGE_SIZE = 5;
@@ -430,30 +205,42 @@ export default function ProductsPage() {
                   <h3
                     id={`product-name-${product.id}`}
                     data-testid={`product-name-${product.id}`}
-                    className="font-semibold text-slate-900 text-base mb-2 leading-snug"
+                    className="font-semibold text-slate-900 text-base mb-4 leading-snug"
                   >
                     {product.name}
                   </h3>
 
-                  <div className="flex items-center gap-2 mb-4">
-                    <span
-                      id={`product-model-${product.id}`}
-                      data-testid={`product-model-${product.id}`}
-                      className="font-mono text-xs text-slate-600 bg-slate-100 px-2 py-0.5"
-                      style={{ borderRadius: '2px' }}
-                    >
-                      {product.model}
-                    </span>
-                    <span className="text-xs text-slate-400">{product.category}</span>
-                  </div>
-
-                  <dl className="grid grid-cols-2 gap-x-8 gap-y-2">
-                    {product.specs.map((spec) => (
-                      <div key={spec.label} className="flex items-baseline gap-2">
-                        <dt className="text-xs text-slate-500 w-28 shrink-0">{spec.label}</dt>
-                        <dd className="text-sm font-medium text-slate-800">{spec.value}</dd>
-                      </div>
-                    ))}
+                  <dl className="flex flex-col gap-2">
+                    <div className="flex items-baseline gap-3">
+                      <dt className="text-xs text-slate-500 w-24 shrink-0">Model</dt>
+                      <dd
+                        id={`product-model-${product.id}`}
+                        data-testid={`product-model-${product.id}`}
+                        className="font-mono text-xs text-slate-700"
+                      >
+                        {product.model}
+                      </dd>
+                    </div>
+                    <div className="flex items-baseline gap-3">
+                      <dt className="text-xs text-slate-500 w-24 shrink-0">Manufacturer</dt>
+                      <dd
+                        id={`product-manufacturer-${product.id}`}
+                        data-testid={`product-manufacturer-${product.id}`}
+                        className="text-sm text-slate-800"
+                      >
+                        {product.manufacturer}
+                      </dd>
+                    </div>
+                    <div className="flex items-baseline gap-3">
+                      <dt className="text-xs text-slate-500 w-24 shrink-0">Specs</dt>
+                      <dd
+                        id={`product-specs-${product.id}`}
+                        data-testid={`product-specs-${product.id}`}
+                        className="text-sm text-slate-700"
+                      >
+                        {product.specs}
+                      </dd>
+                    </div>
                   </dl>
                 </div>
 
