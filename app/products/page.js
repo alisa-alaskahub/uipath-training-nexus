@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, Suspense } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 
 const breadcrumbs = [
@@ -53,12 +54,14 @@ function formatPrice(price) {
   return price.toLocaleString('pl-PL') + ' PLN';
 }
 
-export default function ProductsPage() {
+function ProductsCatalog() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [stockFilter, setStockFilter] = useState('All');
   const [applied, setApplied] = useState({ minPrice: '', maxPrice: '', stock: 'All' });
-  const [currentPage, setCurrentPage] = useState(1);
 
   const filtered = useMemo(() => {
     return PRODUCTS.filter((p) => {
@@ -70,12 +73,13 @@ export default function ProductsPage() {
   }, [applied]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(Math.max(1, Number(searchParams.get('page') || '1')), totalPages);
   const paginated = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
 
   function handleSearch(e) {
     e.preventDefault();
     setApplied({ minPrice, maxPrice, stock: stockFilter });
-    setCurrentPage(1);
+    router.push('/products?page=1');
   }
 
   function handleReset() {
@@ -83,11 +87,12 @@ export default function ProductsPage() {
     setMaxPrice('');
     setStockFilter('All');
     setApplied({ minPrice: '', maxPrice: '', stock: 'All' });
-    setCurrentPage(1);
+    router.push('/products?page=1');
   }
 
   function goToPage(page) {
-    setCurrentPage(Math.max(1, Math.min(totalPages, page)));
+    const clamped = Math.max(1, Math.min(totalPages, page));
+    router.push(`/products?page=${clamped}`);
   }
 
   const inputClass =
@@ -296,12 +301,20 @@ export default function ProductsPage() {
           </span>
 
           <div className="flex items-center gap-1">
-            <button type="button" id="prev-page" data-testid="prev-page"
-              onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}
-              className="h-8 px-3 border border-slate-300 text-sm text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-              style={{ borderRadius: '2px' }}>
-              Previous
-            </button>
+            {currentPage === 1 ? (
+              <button type="button" id="prev-page" data-testid="prev-page" disabled
+                className="h-8 px-3 border border-slate-300 text-sm text-slate-600 opacity-40 cursor-not-allowed transition-colors"
+                style={{ borderRadius: '2px' }}>
+                Previous
+              </button>
+            ) : (
+              <button type="button" id="prev-page" data-testid="prev-page"
+                onClick={() => goToPage(currentPage - 1)}
+                className="h-8 px-3 border border-slate-300 text-sm text-slate-600 hover:bg-slate-100 transition-colors"
+                style={{ borderRadius: '2px' }}>
+                Previous
+              </button>
+            )}
 
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <button key={page} type="button" id={`page-${page}`} data-testid={`page-${page}`}
@@ -317,16 +330,32 @@ export default function ProductsPage() {
               </button>
             ))}
 
-            <button type="button" id="next-page" data-testid="next-page"
-              onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}
-              className="h-8 px-3 border border-slate-300 text-sm text-slate-600 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-              style={{ borderRadius: '2px' }}>
-              Next
-            </button>
+            {currentPage === totalPages ? (
+              <button type="button" id="next-page" data-testid="next-page" disabled
+                className="h-8 px-3 border border-slate-300 text-sm text-slate-600 opacity-40 cursor-not-allowed transition-colors"
+                style={{ borderRadius: '2px' }}>
+                Next
+              </button>
+            ) : (
+              <button type="button" id="next-page" data-testid="next-page"
+                onClick={() => goToPage(currentPage + 1)}
+                className="h-8 px-3 border border-slate-300 text-sm text-slate-600 hover:bg-slate-100 transition-colors"
+                style={{ borderRadius: '2px' }}>
+                Next
+              </button>
+            )}
           </div>
         </div>
 
       </main>
     </>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={null}>
+      <ProductsCatalog />
+    </Suspense>
   );
 }
