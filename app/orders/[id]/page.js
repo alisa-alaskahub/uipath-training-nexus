@@ -82,124 +82,105 @@ export default function OrderDetailPage() {
           </Link>
         </div>
 
-        {/* Detail card */}
-        <div
-          id="order-detail-card"
-          className="max-w-2xl mx-auto bg-white border border-slate-200 p-6"
-          style={{ borderRadius: '2px' }}
-        >
-
-          {/* Fields */}
-          <dl className="flex flex-col gap-4 mb-6">
-            <div className="flex items-baseline gap-4">
-              <dt className={labelClass}>Order ID</dt>
-              <dd>
-                <span
-                  id="detail-order-id"
-                  data-testid="detail-order-id"
-                  className="font-mono font-medium text-sm text-slate-900"
+        {/* Error card — shown alone, no other details */}
+        {isErrorOrder && (
+          <div
+            id="order-detail-card"
+            className="max-w-2xl mx-auto bg-white border border-red-200 p-8"
+            style={{ borderRadius: '2px' }}
+          >
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                <svg className="w-5 h-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                </svg>
+              </div>
+              <div>
+                <h2 className="text-lg font-bold text-red-700 mb-1">Order Cannot Be Processed</h2>
+                <p
+                  id="order-error-message"
+                  data-testid="order-error"
+                  className="text-base text-red-600"
                 >
-                  {order.id}
-                </span>
-              </dd>
+                  This order cannot be processed due to a system error. Please contact support.
+                </p>
+              </div>
             </div>
+          </div>
+        )}
 
-            <div className="flex items-baseline gap-4">
-              <dt className={labelClass}>Customer</dt>
-              <dd>
-                <span
-                  id="detail-customer"
-                  data-testid="detail-customer"
-                  className={valueClass}
-                >
-                  {order.customer}
-                </span>
-              </dd>
-            </div>
-
-            <div className="flex items-baseline gap-4">
-              <dt className={labelClass}>Product</dt>
-              <dd>
-                <span
-                  id="detail-product"
-                  data-testid="detail-product"
-                  className={valueClass}
-                >
-                  {order.product}
-                </span>
-              </dd>
-            </div>
-
-            <div className="flex items-baseline gap-4">
-              <dt className={labelClass}>Amount</dt>
-              <dd>
-                <span
-                  id="detail-amount"
-                  data-testid="detail-amount"
-                  className="font-mono font-medium text-sm text-slate-900"
-                >
-                  {order.amount}
-                </span>
-              </dd>
-            </div>
-
-            <div className="flex items-baseline gap-4">
-              <dt className={labelClass}>Delivery Address</dt>
-              <dd>
-                <span
-                  id="detail-address"
-                  data-testid="detail-address"
-                  className={valueClass}
-                >
-                  {order.address}
-                </span>
-              </dd>
-            </div>
-
-            <div className="flex items-baseline gap-4">
-              <dt className={labelClass}>Current Status</dt>
-              <dd>
-                <span
-                  id="detail-current-status"
-                  data-testid="detail-current-status"
-                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium ${STATUS_STYLES[order.status]}`}
-                  style={{ borderRadius: '2px' }}
-                >
-                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${STATUS_DOT[order.status]}`} />
-                  {order.status}
-                </span>
-              </dd>
-            </div>
-          </dl>
-
-          <div className="border-t border-slate-100" />
-
-          {/* Error orders */}
-          {isErrorOrder && (
-            <div
-              id="order-error-message"
-              data-testid="order-error"
-              className="mt-5 pl-3 border-l-2 border-red-400"
-            >
-              <p className="text-sm text-red-600">
-                This order cannot be processed due to a system error. Please contact support.
-              </p>
-            </div>
-          )}
-
-          {/* Update status form */}
-          {!isErrorOrder && (
-            <div id="update-status-section" data-testid="update-status-section" className="mt-5">
-              <form
-                id="update-status-form"
-                data-testid="update-status-form"
-                onSubmit={handleSave}
-              >
-                <div className="mb-4">
-                  <label
-                    htmlFor="status-select"
-                    className="block text-sm font-medium text-slate-700 mb-1.5"
+        {/* Detail card — normal orders only */}
+        {!isErrorOrder && (
+          <div
+            id="order-detail-card"
+            className="max-w-2xl mx-auto bg-white border border-slate-200 p-6"
+            style={{ borderRadius: '2px' }}
+          >
+            {/* Fields */}
+            <dl className="flex flex-col gap-4 mb-6">
+              <div className="flex items-baseline gap-4">
+                <dt className={labelClass}>Order ID</dt>
+                <dd>
+                  <span id="detail-order-id" data-testid="detail-order-id" className="font-mono font-medium text-sm text-slate-900">
+                    {order.id}
+                  </span>
+                </dd>
+              </div>
+              <div className="flex items-baseline gap-4">
+                <dt className={labelClass}>Customer</dt>
+                <dd>
+                  <span id="detail-customer" data-testid="detail-customer" className={valueClass}>
+                    {order.customer}
+                  </span>
+                </dd>
+              </div>
+              <div className="flex items-baseline gap-4">
+                <dt className={labelClass}>Product</dt>
+                <dd>
+                  <span id="detail-product" data-testid="detail-product" className={valueClass}>
+                    {order.product}
+                  </span>
+                </dd>
+              </div>
+              <div className="flex items-baseline gap-4">
+                <dt className={labelClass}>Amount</dt>
+                <dd>
+                  <span id="detail-amount" data-testid="detail-amount" className="font-mono font-medium text-sm text-slate-900">
+                    {order.amount}
+                  </span>
+                </dd>
+              </div>
+              <div className="flex items-baseline gap-4">
+                <dt className={labelClass}>Delivery Address</dt>
+                <dd>
+                  <span id="detail-address" data-testid="detail-address" className={valueClass}>
+                    {order.address}
+                  </span>
+                </dd>
+              </div>
+              <div className="flex items-baseline gap-4">
+                <dt className={labelClass}>Current Status</dt>
+                <dd>
+                  <span
+                    id="detail-current-status"
+                    data-testid="detail-current-status"
+                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium ${STATUS_STYLES[order.status]}`}
+                    style={{ borderRadius: '2px' }}
                   >
+                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${STATUS_DOT[order.status]}`} />
+                    {order.status}
+                  </span>
+                </dd>
+              </div>
+            </dl>
+
+            <div className="border-t border-slate-100" />
+
+            {/* Update status form */}
+            <div id="update-status-section" data-testid="update-status-section" className="mt-5">
+              <form id="update-status-form" data-testid="update-status-form" onSubmit={handleSave}>
+                <div className="mb-4">
+                  <label htmlFor="status-select" className="block text-sm font-medium text-slate-700 mb-1.5">
                     New Status
                   </label>
                   <select
@@ -207,10 +188,7 @@ export default function OrderDetailPage() {
                     name="status-select"
                     data-testid="input-status-select"
                     value={selectedStatus}
-                    onChange={(e) => {
-                      setSelectedStatus(e.target.value);
-                      setSaveSuccess(false);
-                    }}
+                    onChange={(e) => { setSelectedStatus(e.target.value); setSaveSuccess(false); }}
                     className="w-full h-10 px-3 border border-slate-300 text-sm text-slate-900 outline-none focus:border-blue-700 focus:ring-1 focus:ring-blue-700 bg-white"
                     style={{ borderRadius: '2px' }}
                   >
@@ -219,44 +197,28 @@ export default function OrderDetailPage() {
                     ))}
                   </select>
                 </div>
-
                 <div className="flex items-center gap-3">
-                  <button
-                    type="submit"
-                    id="save-status"
-                    data-testid="btn-save-status"
+                  <button type="submit" id="save-status" data-testid="btn-save-status"
                     className="h-10 px-6 bg-blue-700 text-white text-sm font-medium hover:bg-blue-800 transition-colors"
-                    style={{ borderRadius: '2px' }}
-                  >
+                    style={{ borderRadius: '2px' }}>
                     Save Status
                   </button>
-                  <Link
-                    id="cancel-status"
-                    data-testid="cancel-status"
-                    href="/orders"
+                  <Link id="cancel-status" data-testid="cancel-status" href="/orders"
                     className="h-10 px-6 border border-slate-300 text-slate-600 text-sm font-medium hover:bg-slate-50 transition-colors inline-flex items-center justify-center"
-                    style={{ borderRadius: '2px' }}
-                  >
+                    style={{ borderRadius: '2px' }}>
                     Cancel
                   </Link>
                 </div>
               </form>
 
               {saveSuccess && (
-                <div
-                  id="save-success"
-                  data-testid="save-success-message"
-                  className="mt-4 pl-3 border-l-2 border-emerald-400"
-                >
-                  <p className="text-sm text-emerald-700 font-medium">
-                    Status updated successfully.
-                  </p>
+                <div id="save-success" data-testid="save-success-message" className="mt-4 pl-3 border-l-2 border-emerald-400">
+                  <p className="text-sm text-emerald-700 font-medium">Status updated successfully.</p>
                 </div>
               )}
             </div>
-          )}
-
-        </div>
+          </div>
+        )}
       </main>
     </>
   );
