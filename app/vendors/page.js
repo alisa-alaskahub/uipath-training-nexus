@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar';
 const breadcrumbs = [
   { label: 'Home', href: '/' },
   { label: 'Vendors' },
-  { label: 'Upload Orders' },
+  { label: 'Upload Transactions' },
 ];
 
 export default function VendorUploadPage() {
@@ -43,10 +43,10 @@ export default function VendorUploadPage() {
       <main className="max-w-7xl mx-auto px-8 pt-28 pb-16">
         <div className="mb-6">
           <h1 id="page-title" className="text-3xl font-bold text-slate-900 tracking-tight mb-2">
-            Upload Vendor Orders
+            Upload Vendor Transactions
           </h1>
           <p id="page-subtitle" className="text-slate-600">
-            Submit filtered order file for a vendor.
+            Submit filtered transaction file for a vendor.
           </p>
         </div>
 
@@ -84,7 +84,7 @@ export default function VendorUploadPage() {
 
                 <div className="mb-6">
                   <label htmlFor="vendor-file" className={labelClass}>
-                    Order File <span className="text-red-500">*</span>
+                    Transaction File <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="file"
@@ -110,7 +110,7 @@ export default function VendorUploadPage() {
                     className="h-10 px-6 bg-blue-700 text-white text-sm font-medium hover:bg-blue-800 transition-colors"
                     style={{ borderRadius: '2px' }}
                   >
-                    Upload Orders
+                    Upload Transactions
                   </button>
                   <button
                     type="button"
@@ -161,7 +161,7 @@ export default function VendorUploadPage() {
                 data-testid="upload-success-message"
                 className="text-slate-600 text-center text-sm mb-6"
               >
-                Orders file uploaded successfully for vendor:{' '}
+                Transactions file uploaded successfully for vendor:{' '}
                 <span id="upload-vendor-name" data-testid="upload-vendor-name" className="font-semibold text-slate-900">
                   {confirmedVendor}
                 </span>
