@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import { orders } from '@/lib/orders';
 
@@ -68,6 +69,9 @@ export default function OrdersPage() {
                 <th className="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">
                   Status
                 </th>
+                <th className="px-5 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                  &nbsp;
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -108,6 +112,16 @@ export default function OrdersPage() {
                       <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${STATUS_DOT[order.status]}`} />
                       {order.status}
                     </span>
+                  </td>
+                  <td className="px-5 py-4">
+                    <Link
+                      href={`/orders/${order.id}`}
+                      id={`view-order-${order.id}`}
+                      data-testid={`view-order-${order.id}`}
+                      className="text-xs font-semibold text-blue-700 hover:underline tracking-wide"
+                    >
+                      VIEW
+                    </Link>
                   </td>
                 </tr>
               ))}
