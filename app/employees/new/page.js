@@ -160,11 +160,12 @@ export default function AddEmployeePage() {
                   Start Date <span className="text-red-500">*</span>
                 </label>
                 <input
-                  type="date"
+                  type="text"
                   id="start-date"
                   name="start-date"
                   data-testid="input-start-date"
                   data-field="startDate"
+                  placeholder="DD/MM/YYYY"
                   required
                   value={form.startDate}
                   onChange={handleChange}
